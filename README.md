@@ -2,7 +2,6 @@
 
 Projeto acadêmico de demonstração da biblioteca [A-Frame](https://aframe.io) para criação de cenas 3D interativas no navegador via WebXR.
 
-**Disciplina:** Computação Gráfica / Desenvolvimento Web  
 **Autor:** Yuri Alves Bordin
 
 ---
@@ -94,16 +93,6 @@ Testado nos navegadores modernos com suporte a WebGL 2.0:
 - Mozilla Firefox 120+
 - Microsoft Edge 120+
 - Safari 17+ (suporte parcial a WebXR)
-
----
-
-## Referencias
-
-- A-Frame Documentation — https://aframe.io/docs/
-- A-Frame GitHub Repository — https://github.com/aframevr/aframe
-- Three.js Documentation — https://threejs.org/docs/
-- WebXR Device API (MDN) — https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API
-- Entity-Component System (Wikipedia) — https://en.wikipedia.org/wiki/Entity_component_system
 
 ---
 
