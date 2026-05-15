@@ -32,10 +32,6 @@
     header {
       padding: 40px 48px 32px;
       border-bottom: 1px solid var(--dim);
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px;
     }
 
     .header-eyebrow {
@@ -59,16 +55,6 @@
       color: var(--muted);
       margin-top: 8px;
       font-weight: 300;
-    }
-
-    .header-badge {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--muted);
-      border: 1px solid var(--dim);
-      padding: 5px 12px;
-      white-space: nowrap;
-      align-self: flex-start;
     }
 
     /* CARDS */
@@ -193,12 +179,9 @@
 <body>
 
   <header>
-    <div>
-      <p class="header-eyebrow">Computacao Grafica</p>
-      <h1>A-Frame Demo</h1>
-      <p class="header-sub">Yuri Alves Bordin &mdash; Demonstracao de biblioteca WebXR</p>
-    </div>
-    <span class="header-badge">aframe v1.5.0</span>
+    <p class="header-eyebrow">Computacao Grafica</p>
+    <h1>A-Frame Demo</h1>
+    <p class="header-sub">Yuri Alves Bordin &mdash; Demonstracao de biblioteca WebXR</p>
   </header>
 
   <main>
