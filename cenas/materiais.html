@@ -27,56 +27,127 @@
   <div id="info">point light &nbsp;&mdash;&nbsp; emissive &nbsp;&mdash;&nbsp; metalness &nbsp;&mdash;&nbsp; Arraste para girar</div>
 
   <a-scene background="color: #020202">
-
     <a-light type="ambient" color="#ffffff" intensity="0.03"></a-light>
 
-    <!-- NUCLEO -->
     <a-sphere position="0 1.6 -5" radius="1.1"
       material="color:#1a1a2e; roughness:0.1; metalness:0.95; emissive:#0a0a1a; emissiveIntensity:0.3">
     </a-sphere>
 
-    <!-- ELETRON 1: vermelho, plano horizontal (sem inclinacao) -->
+    <!-- ELETRON 1: plano horizontal -->
     <a-entity position="0 1.6 -5">
       <a-entity animation="property:rotation; from:0 0 0; to:0 360 0; loop:true; dur:3000; easing:linear">
         <a-entity position="2.4 0 0">
-          <a-sphere radius="0.18" material="color:#ff2200; emissive:#ff2200; emissiveIntensity:1; roughness:0; metalness:0"></a-sphere>
-          <a-light type="point" color="#ff2200" intensity="2.5" distance="7" decay="2"></a-light>
+          <a-sphere id="e1-sphere" radius="0.18" material="color:#ff2200; emissive:#ff2200; emissiveIntensity:1; roughness:0; metalness:0"></a-sphere>
+          <a-light id="e1-light" type="point" color="#ff2200" intensity="2.5" distance="7" decay="2"></a-light>
         </a-entity>
       </a-entity>
     </a-entity>
 
-    <!-- ELETRON 2: azul, plano inclinado 60deg no eixo Z -->
+    <!-- ELETRON 2: inclinado 60deg -->
     <a-entity position="0 1.6 -5" rotation="0 0 60">
       <a-entity animation="property:rotation; from:0 0 0; to:0 360 0; loop:true; dur:4500; easing:linear">
         <a-entity position="2.4 0 0">
-          <a-sphere radius="0.18" material="color:#2979ff; emissive:#2979ff; emissiveIntensity:1; roughness:0; metalness:0"></a-sphere>
-          <a-light type="point" color="#2979ff" intensity="2.5" distance="7" decay="2"></a-light>
+          <a-sphere id="e2-sphere" radius="0.18" material="color:#2979ff; emissive:#2979ff; emissiveIntensity:1; roughness:0; metalness:0"></a-sphere>
+          <a-light id="e2-light" type="point" color="#2979ff" intensity="2.5" distance="7" decay="2"></a-light>
         </a-entity>
       </a-entity>
     </a-entity>
 
-    <!-- ELETRON 3: verde, plano inclinado -60deg no eixo Z -->
+    <!-- ELETRON 3: inclinado -60deg -->
     <a-entity position="0 1.6 -5" rotation="0 0 -60">
       <a-entity animation="property:rotation; from:0 0 0; to:0 360 0; loop:true; dur:6000; easing:linear">
         <a-entity position="2.4 0 0">
-          <a-sphere radius="0.18" material="color:#00e676; emissive:#00e676; emissiveIntensity:1; roughness:0; metalness:0"></a-sphere>
-          <a-light type="point" color="#00e676" intensity="2.5" distance="7" decay="2"></a-light>
+          <a-sphere id="e3-sphere" radius="0.18" material="color:#00e676; emissive:#00e676; emissiveIntensity:1; roughness:0; metalness:0"></a-sphere>
+          <a-light id="e3-light" type="point" color="#00e676" intensity="2.5" distance="7" decay="2"></a-light>
         </a-entity>
       </a-entity>
     </a-entity>
 
-    <!-- ELETRON 4: amarelo, plano vertical (90deg no eixo Z) -->
+    <!-- ELETRON 4: vertical 90deg -->
     <a-entity position="0 1.6 -5" rotation="0 0 90">
       <a-entity animation="property:rotation; from:0 0 0; to:0 360 0; loop:true; dur:5200; easing:linear">
         <a-entity position="2.4 0 0">
-          <a-sphere radius="0.18" material="color:#ffd600; emissive:#ffd600; emissiveIntensity:1; roughness:0; metalness:0"></a-sphere>
-          <a-light type="point" color="#ffd600" intensity="2.5" distance="7" decay="2"></a-light>
+          <a-sphere id="e4-sphere" radius="0.18" material="color:#ffd600; emissive:#ffd600; emissiveIntensity:1; roughness:0; metalness:0"></a-sphere>
+          <a-light id="e4-light" type="point" color="#ffd600" intensity="2.5" distance="7" decay="2"></a-light>
         </a-entity>
       </a-entity>
     </a-entity>
 
     <a-camera position="0 1.6 0" look-controls wasd-controls></a-camera>
-
   </a-scene>
+
+  <script>
+    const ELECTRONS = [
+      { sphere: 'e1-sphere', light: 'e1-light' },
+      { sphere: 'e2-sphere', light: 'e2-light' },
+      { sphere: 'e3-sphere', light: 'e3-light' },
+      { sphere: 'e4-sphere', light: 'e4-light' },
+    ];
+
+    const TRANSITION_MS = 1200;
+    const HOLD_MS = 3000;
+
+    function randHSL() {
+      return { h: Math.random() * 360, s: 80 + Math.random() * 20, l: 50 + Math.random() * 15 };
+    }
+
+    function hslToHex(h, s, l) {
+      s /= 100; l /= 100;
+      const a = s * Math.min(l, 1 - l);
+      const f = n => {
+        const k = (n + h / 30) % 12;
+        const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+        return Math.round(255 * color).toString(16).padStart(2, '0');
+      };
+      return '#' + f(0) + f(8) + f(4);
+    }
+
+    function lerpHSL(a, b, t) {
+      let dh = b.h - a.h;
+      if (dh > 180) dh -= 360;
+      if (dh < -180) dh += 360;
+      return {
+        h: a.h + dh * t,
+        s: a.s + (b.s - a.s) * t,
+        l: a.l + (b.l - a.l) * t,
+      };
+    }
+
+    function animateColor(electronIndex, fromHSL, toHSL) {
+      const { sphere, light } = ELECTRONS[electronIndex];
+      const sphereEl = document.getElementById(sphere);
+      const lightEl  = document.getElementById(light);
+      const start = performance.now();
+
+      function tick(now) {
+        const t = Math.min((now - start) / TRANSITION_MS, 1);
+        const eased = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        const mid = lerpHSL(fromHSL, toHSL, eased);
+        const hex = hslToHex(mid.h, mid.s, mid.l);
+
+        sphereEl.setAttribute('material', `color:${hex}; emissive:${hex}; emissiveIntensity:1; roughness:0; metalness:0`);
+        lightEl.setAttribute('light', `type:point; color:${hex}; intensity:2.5; distance:7; decay:2`);
+
+        if (t < 1) requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    const currentColors = ELECTRONS.map(() => randHSL());
+
+    function cycleElectron(i) {
+      const next = randHSL();
+      animateColor(i, currentColors[i], next);
+      currentColors[i] = next;
+      setTimeout(() => cycleElectron(i), HOLD_MS + Math.random() * 1000);
+    }
+
+    document.querySelector('a-scene').addEventListener('loaded', () => {
+      ELECTRONS.forEach((_, i) => {
+        setTimeout(() => cycleElectron(i), i * 600);
+      });
+    });
+  </script>
 </body>
 </html>
