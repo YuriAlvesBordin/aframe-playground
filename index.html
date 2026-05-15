@@ -5,89 +5,285 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A-Frame Demo</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;600;700;900&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:  #0a0a0a;
+      --white:  #f0f0f0;
+      --green:  #00ff41;
+      --yellow: #ffe600;
+      --blue:   #0057ff;
+      --red:    #ff1a1a;
+    }
+
     body {
-      font-family: system-ui, sans-serif;
-      background: #0d1117;
-      color: #e6edf3;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
     }
-    header { text-align: center; margin-bottom: 48px; }
-    header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
-    header p { color: #8b949e; font-size: 0.95rem; }
-    .badge {
-      display: inline-block; margin-top: 12px;
-      background: #21262d; border: 1px solid #30363d;
-      border-radius: 999px; padding: 4px 14px;
-      font-size: 0.78rem; color: #58a6ff;
+
+    /* ── HEADER ── */
+    header {
+      border-bottom: 3px solid var(--white);
+      padding: 24px 40px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
     }
-    .cards {
+
+    .header-left { display: flex; flex-direction: column; gap: 4px; }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    h1 span { color: var(--green); }
+
+    .header-sub {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.78rem;
+      color: #888;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .header-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      border: 1px solid #444;
+      padding: 4px 10px;
+      color: #666;
+      white-space: nowrap;
+    }
+
+    /* ── MAIN GRID ── */
+    main {
+      flex: 1;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      width: 100%;
-      max-width: 800px;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 3px solid var(--white);
     }
+
     .card {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 12px;
-      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 32px 36px;
       text-decoration: none;
-      color: inherit;
-      transition: border-color 0.2s, transform 0.2s;
+      color: var(--white);
+      border-right: 3px solid var(--white);
+      min-height: 340px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.15s ease;
     }
-    .card:hover { border-color: #58a6ff; transform: translateY(-3px); }
-    .card-num { font-size: 0.75rem; color: #8b949e; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
-    .card h2 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
-    .card p { font-size: 0.85rem; color: #8b949e; line-height: 1.5; }
+
+    .card:last-child { border-right: none; }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 5px;
+    }
+
+    .card-01::before { background: var(--green); }
+    .card-02::before { background: var(--yellow); }
+    .card-03::before { background: var(--blue); }
+
+    .card-01:hover { background: #001a09; }
+    .card-02:hover { background: #1a1700; }
+    .card-03:hover { background: #00001a; }
+
+    .card-top { display: flex; flex-direction: column; gap: 16px; }
+
+    .card-index {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: #555;
+    }
+
+    .card-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+    }
+
+    .card-01 .card-title { color: var(--green); }
+    .card-02 .card-title { color: var(--yellow); }
+    .card-03 .card-title { color: var(--blue); }
+
+    .card-desc {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #aaa;
+      line-height: 1.5;
+      max-width: 28ch;
+    }
+
+    .card-bottom { display: flex; flex-direction: column; gap: 12px; }
+
     .card-tag {
-      display: inline-block; margin-top: 14px;
-      background: #21262d; border-radius: 4px;
-      padding: 2px 8px; font-size: 0.72rem;
-      color: #3fb950; font-family: monospace;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: #555;
+      letter-spacing: 1px;
     }
-    footer { margin-top: 56px; color: #484f58; font-size: 0.8rem; text-align: center; }
+
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .card-01 .card-cta { color: var(--green); }
+    .card-02 .card-cta { color: var(--yellow); }
+    .card-03 .card-cta { color: var(--blue); }
+
+    .card-cta::after {
+      content: '\2192';
+      font-size: 1.1rem;
+      transition: transform 0.15s ease;
+    }
+
+    .card:hover .card-cta::after { transform: translateX(5px); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-left {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: #555;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .footer-right {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: #555;
+      letter-spacing: 1px;
+    }
+
+    .footer-right a { color: var(--green); text-decoration: none; }
+    .footer-right a:hover { text-decoration: underline; }
+
+    /* ── STATUS BAR ── */
+    .status-bar {
+      background: var(--red);
+      color: var(--black);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 5px 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .status-dot {
+      width: 6px; height: 6px;
+      background: var(--black);
+      border-radius: 50%;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      header { padding: 20px 20px; }
+      main { grid-template-columns: 1fr; }
+      .card { border-right: none; border-bottom: 3px solid var(--white); min-height: 260px; padding: 28px 20px; }
+      .card:last-child { border-bottom: none; }
+      footer { padding: 16px 20px; }
+      .status-bar { padding: 5px 20px; }
+    }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>A-Frame Demo</h1>
-    <p>Projeto de faculdade &mdash; demonstracao da biblioteca A-Frame</p>
-    <span class="badge">Computacao Grafica</span>
-  </header>
-
-  <div class="cards">
-    <a class="card" href="cenas/primitivos.html">
-      <div class="card-num">Demo 01</div>
-      <h2>Primitivos 3D</h2>
-      <p>Geometrias nativas do A-Frame: box, sphere, cylinder, cone, torus e plane.</p>
-      <span class="card-tag">&lt;a-box&gt; &lt;a-sphere&gt;</span>
-    </a>
-
-    <a class="card" href="cenas/materiais.html">
-      <div class="card-num">Demo 02</div>
-      <h2>Materiais</h2>
-      <p>Sistema PBR com roughness, metalness, opacity, emissive e wireframe.</p>
-      <span class="card-tag">material="roughness:0"</span>
-    </a>
-
-    <a class="card" href="cenas/animacoes.html">
-      <div class="card-num">Demo 03</div>
-      <h2>Animacoes</h2>
-      <p>Animacoes declarativas de posicao, rotacao, escala e cor via atributo HTML.</p>
-      <span class="card-tag">animation="property:..."</span>
-    </a>
+  <div class="status-bar">
+    <span class="status-dot"></span>
+    <span>Sistema operacional &mdash; 3 modulos disponiveis</span>
   </div>
 
+  <header>
+    <div class="header-left">
+      <h1>A-<span>Frame</span></h1>
+      <p class="header-sub">Computacao Grafica &mdash; Yuri Alves Bordin</p>
+    </div>
+    <span class="header-tag">v1.5.0 / WebXR</span>
+  </header>
+
+  <main>
+    <a class="card card-01" href="cenas/primitivos.html">
+      <div class="card-top">
+        <span class="card-index">MODULO_01</span>
+        <h2 class="card-title">Primitivos<br>3D</h2>
+        <p class="card-desc">Geometrias nativas: box, sphere, cylinder, cone, torus e plane.</p>
+      </div>
+      <div class="card-bottom">
+        <span class="card-tag">&lt;a-box&gt; &lt;a-sphere&gt; &lt;a-cylinder&gt;</span>
+        <span class="card-cta">Abrir modulo</span>
+      </div>
+    </a>
+
+    <a class="card card-02" href="cenas/materiais.html">
+      <div class="card-top">
+        <span class="card-index">MODULO_02</span>
+        <h2 class="card-title">Materiais<br>PBR</h2>
+        <p class="card-desc">Roughness, metalness, opacity, emissive e wireframe.</p>
+      </div>
+      <div class="card-bottom">
+        <span class="card-tag">material="roughness:0; metalness:1"</span>
+        <span class="card-cta">Abrir modulo</span>
+      </div>
+    </a>
+
+    <a class="card card-03" href="cenas/animacoes.html">
+      <div class="card-top">
+        <span class="card-index">MODULO_03</span>
+        <h2 class="card-title">Animacoes<br>Declarativas</h2>
+        <p class="card-desc">Posicao, rotacao, escala e cor animados via atributo HTML.</p>
+      </div>
+      <div class="card-bottom">
+        <span class="card-tag">animation="property:rotation; loop:true"</span>
+        <span class="card-cta">Abrir modulo</span>
+      </div>
+    </a>
+  </main>
+
   <footer>
-    Yuri Alves Bordin &mdash; <a href="https://aframe.io" target="_blank" style="color:#58a6ff">aframe.io</a>
+    <span class="footer-left">Projeto academico &mdash; uso educacional</span>
+    <span class="footer-right"><a href="https://aframe.io" target="_blank">aframe.io</a></span>
   </footer>
 
 </body>
