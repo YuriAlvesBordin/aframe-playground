@@ -2,59 +2,59 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Demo 03 — Animações</title>
+  <title>Demo 03 &mdash; Animacoes</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <style>
-    #back { position:fixed; top:16px; left:16px; z-index:999;
-      background:rgba(0,0,0,0.6); color:#fff; padding:8px 16px;
-      border-radius:8px; text-decoration:none; font-family:system-ui; font-size:0.85rem; }
-    #label { position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
-      background:rgba(0,0,0,0.6); color:#50fa7b; padding:8px 20px;
-      border-radius:8px; font-family:system-ui; font-size:0.85rem; }
+    #back {
+      position: fixed; top: 16px; left: 16px; z-index: 999;
+      background: rgba(0,0,0,0.6); color: #fff; padding: 8px 16px;
+      border-radius: 8px; text-decoration: none; font-family: system-ui; font-size: 0.85rem;
+    }
+    #back:hover { background: rgba(255,255,255,0.15); }
+    #label {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.6); color: #50fa7b; padding: 8px 20px;
+      border-radius: 8px; font-family: system-ui; font-size: 0.85rem;
+    }
   </style>
 </head>
 <body>
-  <a href="../index.html" id="back">← Voltar</a>
-  <div id="label">Demo 03 — Animações declarativas &nbsp;|&nbsp; Arraste para girar</div>
+  <a href="../index.html" id="back">&#8592; Voltar</a>
+  <div id="label">Demo 03 &mdash; Animacoes declarativas &nbsp;|&nbsp; Arraste para girar</div>
 
   <a-scene background="color: #0d1117">
 
     <a-light type="ambient" color="#fff" intensity="0.5"></a-light>
     <a-light type="directional" color="#fff" intensity="1" position="1 3 1"></a-light>
 
-    <!-- Animação de position -->
     <a-sphere position="-4 0.5 -5" radius="0.6" color="#50fa7b"
               animation="property:position; from:-4 0.5 -5; to:-4 2 -5; dir:alternate; loop:true; dur:1200; easing:easeInOutBounce">
     </a-sphere>
     <a-text value="position\nbounce" position="-4 -0.3 -5" align="center" color="#aaa" width="4"></a-text>
 
-    <!-- Animação de rotation -->
     <a-box position="-1.5 1 -5" color="#64ffda"
            animation="property:rotation; to:360 360 0; loop:true; dur:3000; easing:linear">
     </a-box>
     <a-text value="rotation\nlinear" position="-1.5 -0.3 -5" align="center" color="#aaa" width="4"></a-text>
 
-    <!-- Animação de scale -->
     <a-icosahedron position="1 1 -5" radius="0.6" color="#bd93f9"
                    animation="property:scale; from:0.5 0.5 0.5; to:1.5 1.5 1.5; dir:alternate; loop:true; dur:1800; easing:easeInOutCubic">
     </a-icosahedron>
     <a-text value="scale\ncubic" position="1 -0.3 -5" align="center" color="#aaa" width="4"></a-text>
 
-    <!-- Animação de color -->
     <a-torus position="3.5 1 -5" radius="0.6" radius-tubular="0.15"
              animation__color="property:material.color; from:#ff79c6; to:#8be9fd; dir:alternate; loop:true; dur:1500; easing:easeInOutSine"
              animation__rot="property:rotation; to:360 0 0; loop:true; dur:4000; easing:linear">
     </a-torus>
     <a-text value="color\nsine" position="3.5 -0.3 -5" align="center" color="#aaa" width="4"></a-text>
 
-    <!-- Múltiplas animações -->
     <a-torus-knot position="0 1 -9" radius="0.7" radius-tubular="0.08" color="#ffb86c"
                   animation__1="property:rotation; to:0 360 0; loop:true; dur:4000; easing:linear"
                   animation__2="property:scale; from:0.8 0.8 0.8; to:1.2 1.2 1.2; dir:alternate; loop:true; dur:2000; easing:easeInOutSine"
                   animation__3="property:material.emissiveIntensity; from:0; to:1; dir:alternate; loop:true; dur:1000"
                   material="color:#ffb86c; emissive:#ffb86c">
     </a-torus-knot>
-    <a-text value="multi-animation\n(3 simultâneas)" position="0 -0.8 -9" align="center" color="#aaa" width="6"></a-text>
+    <a-text value="multi-animation\n(3 simultaneas)" position="0 -0.8 -9" align="center" color="#aaa" width="6"></a-text>
 
     <a-plane rotation="-90 0 0" width="20" height="20" color="#161b22" position="0 0 -7"></a-plane>
 

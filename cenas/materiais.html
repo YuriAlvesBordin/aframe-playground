@@ -2,60 +2,58 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Demo 02 — Materiais</title>
+  <title>Demo 02 &mdash; Materiais</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <style>
-    #back { position:fixed; top:16px; left:16px; z-index:999;
-      background:rgba(0,0,0,0.6); color:#fff; padding:8px 16px;
-      border-radius:8px; text-decoration:none; font-family:system-ui; font-size:0.85rem; }
-    #label { position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
-      background:rgba(0,0,0,0.6); color:#ff79c6; padding:8px 20px;
-      border-radius:8px; font-family:system-ui; font-size:0.85rem; }
+    #back {
+      position: fixed; top: 16px; left: 16px; z-index: 999;
+      background: rgba(0,0,0,0.6); color: #fff; padding: 8px 16px;
+      border-radius: 8px; text-decoration: none; font-family: system-ui; font-size: 0.85rem;
+    }
+    #back:hover { background: rgba(255,255,255,0.15); }
+    #label {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.6); color: #ff79c6; padding: 8px 20px;
+      border-radius: 8px; font-family: system-ui; font-size: 0.85rem;
+    }
   </style>
 </head>
 <body>
-  <a href="../index.html" id="back">← Voltar</a>
-  <div id="label">Demo 02 — Materiais PBR &nbsp;|&nbsp; Arraste para girar</div>
+  <a href="../index.html" id="back">&#8592; Voltar</a>
+  <div id="label">Demo 02 &mdash; Materiais PBR &nbsp;|&nbsp; Arraste para girar</div>
 
   <a-scene background="color: #0d1117">
 
-    <!-- Luz forte para mostrar efeitos PBR -->
     <a-light type="ambient" color="#fff" intensity="0.3"></a-light>
     <a-light type="point" color="#ffffff" intensity="3" position="0 5 0" distance="20" decay="1"></a-light>
     <a-light type="point" color="#4488ff" intensity="1" position="-4 2 2" distance="12" decay="2"></a-light>
 
-    <!-- Metal puro -->
     <a-sphere position="-4 1 -5" radius="0.7"
               material="color:#cccccc; roughness:0; metalness:1">
     </a-sphere>
     <a-text value="Metal Puro\nroughness:0\nmetalness:1" position="-4 -0.3 -5" align="center" color="#aaa" width="4"></a-text>
 
-    <!-- Plástico -->
     <a-sphere position="-1.5 1 -5" radius="0.7"
               material="color:#ff6b6b; roughness:0.1; metalness:0">
     </a-sphere>
-    <a-text value="Plástico\nroughness:0.1\nmetalness:0" position="-1.5 -0.3 -5" align="center" color="#aaa" width="4"></a-text>
+    <a-text value="Plastico\nroughness:0.1\nmetalness:0" position="-1.5 -0.3 -5" align="center" color="#aaa" width="4"></a-text>
 
-    <!-- Borracha -->
     <a-sphere position="1 1 -5" radius="0.7"
               material="color:#ffd93d; roughness:1; metalness:0">
     </a-sphere>
     <a-text value="Borracha\nroughness:1\nmetalness:0" position="1 -0.3 -5" align="center" color="#aaa" width="4"></a-text>
 
-    <!-- Vidro (transparente) -->
     <a-sphere position="3.5 1 -5" radius="0.7"
               material="color:#8be9fd; roughness:0; metalness:0.2; opacity:0.45; transparent:true">
     </a-sphere>
     <a-text value="Vidro\nopacity:0.45\ntransparent:true" position="3.5 -0.3 -5" align="center" color="#aaa" width="4"></a-text>
 
-    <!-- Emissivo -->
     <a-torus position="-1 1 -9" radius="1" radius-tubular="0.15"
              material="color:#50fa7b; emissive:#50fa7b; emissiveIntensity:1"
              animation="property:rotation; to:360 360 0; loop:true; dur:6000; easing:linear">
     </a-torus>
     <a-text value="Emissivo\nemissive:#50fa7b\nemissiveIntensity:1" position="-1 -0.5 -9" align="center" color="#aaa" width="5"></a-text>
 
-    <!-- Wireframe -->
     <a-box position="2.5 1 -9" width="1.5" height="1.5" depth="1.5"
            material="color:#bd93f9; wireframe:true"
            animation="property:rotation; to:360 360 0; loop:true; dur:5000; easing:linear">
