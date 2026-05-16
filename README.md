@@ -48,13 +48,13 @@ Acesse `http://localhost:8080` no navegador.
 
 Exibe os primitivos geometricos nativos do A-Frame (`<a-box>`, `<a-sphere>`, `<a-cylinder>`, `<a-cone>`, `<a-torus>`, `<a-torus-knot>`, `<a-icosahedron>`, entre outros) com transicoes automaticas entre formas a cada 2,8 segundos. Cada troca aplica um material PBR aleatorio, variando `roughness`, `metalness`, `opacity`, `emissive` e `wireframe`.
 
-(DemoGif 1)
+![Demo 1 - Primitivos em Morphing](demo_gifs/demo1.gif)
 
 ### Demo 2 — Modelo Atomico
 
 Simulacao de um atomo com nucleo central e eletrons orbitando em planos distribuidos tridimensionalmente. A quantidade de eletrons e configuravel em tempo real via slider (1 a 10). Cada eletron emite luz pontual colorida e transiciona continuamente entre cores via interpolacao HSL, iluminando o nucleo e os eletrons vizinhos.
 
-(DemoGif 2)
+![Demo 2 - Modelo Atomico](demo_gifs/demo2.gif)
 
 ### Demo 3 — Importacao de Modelo 3D
 
