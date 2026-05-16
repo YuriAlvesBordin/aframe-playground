@@ -2,25 +2,6 @@
 
 Demonstração interativa da biblioteca [A-Frame](https://aframe.io) para criação de cenas 3D no navegador via WebXR. Desenvolvido como projeto acadêmico para a disciplina de Computação Gráfica.
 
-**Autor:** Yuri Alves Bordin
-
----
-
-## Sobre o A-Frame
-
-A-Frame é uma biblioteca web de código aberto desenvolvida pela Mozilla que permite construir experiências 3D e de Realidade Virtual (WebVR/WebXR) usando HTML declarativo. Internamente é construída sobre o [Three.js](https://threejs.org) e segue o padrão arquitetural **Entity-Component System (ECS)**, onde cada elemento da cena é uma entidade que recebe comportamentos por meio de componentes.
-
-O diferencial é permitir que cenas 3D completas sejam descritas em HTML puro, sem pipeline de build, bundler ou configuração de ambiente:
-
-```html
-<a-scene>
-  <a-box color="#4CC3D9" position="0 1 -3"></a-box>
-  <a-camera></a-camera>
-</a-scene>
-```
-
----
-
 ## Estrutura do Projeto
 
 ```
@@ -72,30 +53,3 @@ Simulacao de um atomo com nucleo central e eletrons orbitando em planos distribu
 ### Demo 3 — Importacao de Modelo 3D
 
 Permite carregar um arquivo `.glb`, `.gltf` ou `.obj` do sistema de arquivos local via drag-and-drop ou seletor de arquivo. O modelo e centralizado e escalonado automaticamente. A cena oferece controles de orbita estilo Blender: arrastar para orbitar, scroll para zoom e botao direito para pan. Suporte completo a toque em dispositivos moveis.
-
----
-
-## Controles
-
-| Acao | Mouse | Touch |
-|---|---|---|
-| Orbitar a camera | Clicar e arrastar | Um dedo |
-| Zoom | Scroll | Pinch (dois dedos) |
-| Pan | Botao direito + arrastar | — |
-
-As demos 1 e 2 utilizam os controles nativos de look do A-Frame (`look-controls` + `wasd-controls`).
-
----
-
-## Compatibilidade
-
-Testado nos navegadores modernos com suporte a WebGL 2.0:
-
-- Google Chrome 120+
-- Mozilla Firefox 120+
-- Microsoft Edge 120+
-- Safari 17+ (suporte parcial a WebXR)
-
----
-
-<sub>Projeto academico — uso educacional.</sub>
