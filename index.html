@@ -73,7 +73,6 @@
       border-bottom: 1px solid var(--dim);
       min-height: 360px;
       transition: background 0.2s ease;
-      position: relative;
     }
 
     .card:last-child { border-right: none; }
@@ -114,16 +113,6 @@
 
     .card-bottom {
       margin-top: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .card-tag {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--dim);
-      letter-spacing: 0.5px;
     }
 
     .card-link {
@@ -167,7 +156,6 @@
         <p class="card-desc">Geometrias nativas do A-Frame transitando entre formas, materiais e cores de forma continua e aleatoria.</p>
       </div>
       <div class="card-bottom">
-        <span class="card-tag">&lt;a-box&gt; &lt;a-torus-knot&gt; &lt;a-icosahedron&gt; ...</span>
         <span class="card-link">
           Abrir
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -185,7 +173,6 @@
         <p class="card-desc">Nucleo central com eletrons orbitando em planos distribuidos. Quantidade de eletrons configuravel de 1 a 10 via slider.</p>
       </div>
       <div class="card-bottom">
-        <span class="card-tag">type:point &nbsp;emissive &nbsp;metalness:0.95</span>
         <span class="card-link">
           Abrir
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -203,7 +190,6 @@
         <p class="card-desc">Importe um arquivo .glb, .gltf ou .obj. O modelo e centralizado automaticamente e pode ser inspecionado com controles de orbita estilo Blender.</p>
       </div>
       <div class="card-bottom">
-        <span class="card-tag">gltf-model &nbsp;obj-model &nbsp;THREE.Box3</span>
         <span class="card-link">
           Abrir
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
