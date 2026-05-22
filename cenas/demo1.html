@@ -20,6 +20,16 @@
       border: 1px solid #333;
     }
     #info span { color: #00c853; }
+    #btn-ar {
+      position: fixed; top: 16px; right: 16px; z-index: 9999;
+      background: rgba(0,200,83,0.15); color: #00c853;
+      border: 1px solid #00c853; padding: 8px 16px;
+      border-radius: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
+      cursor: pointer; pointer-events: auto; text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+      transition: background 0.2s;
+    }
+    #btn-ar:hover { background: rgba(0,200,83,0.3); }
     a-scene { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +37,14 @@
 </head>
 <body>
   <a href="../index.html" id="back">&#8592; Voltar</a>
+  <a href="demo4.html" id="btn-ar">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M2 8V5a2 2 0 0 1 2-2h3"/><path d="M17 3h3a2 2 0 0 1 2 2v3"/>
+      <path d="M22 16v3a2 2 0 0 1-2 2h-3"/><path d="M7 21H4a2 2 0 0 1-2-2v-3"/>
+      <circle cx="12" cy="12" r="3"/>
+    </svg>
+    Modo AR
+  </a>
   <div id="info">Primitivo atual: <span id="prim-name">a-box</span> &nbsp;|&nbsp; Arraste para girar</div>
 
   <a-scene background="color: #0a0a0a">

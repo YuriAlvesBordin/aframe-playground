@@ -13,6 +13,17 @@
     }
     #back:hover { background: rgba(255,255,255,0.15); }
 
+    #btn-ar {
+      position: fixed; top: 16px; right: 16px; z-index: 9999;
+      background: rgba(255,214,0,0.12); color: #ffd600;
+      border: 1px solid #ffd600; padding: 8px 16px;
+      border-radius: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
+      cursor: pointer; pointer-events: auto; text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+      transition: background 0.2s;
+    }
+    #btn-ar:hover { background: rgba(255,214,0,0.28); }
+
     #panel {
       position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
       z-index: 9999; pointer-events: auto;
@@ -52,6 +63,14 @@
 </head>
 <body>
   <a href="../index.html" id="back">&#8592; Voltar</a>
+  <a href="demo4.html" id="btn-ar">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M2 8V5a2 2 0 0 1 2-2h3"/><path d="M17 3h3a2 2 0 0 1 2 2v3"/>
+      <path d="M22 16v3a2 2 0 0 1-2 2h-3"/><path d="M7 21H4a2 2 0 0 1-2-2v-3"/>
+      <circle cx="12" cy="12" r="3"/>
+    </svg>
+    Modo AR
+  </a>
 
   <div id="panel">
     <label>Eletrons</label>
