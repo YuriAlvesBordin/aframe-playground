@@ -35,7 +35,7 @@
 
     .header-eyebrow {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.7rem;
+      font-size: clamp(0.6rem, 1.2vw, 0.75rem);
       color: var(--green);
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -43,14 +43,14 @@
     }
 
     h1 {
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-size: clamp(2rem, 5vw, 3.8rem);
       font-weight: 700;
       letter-spacing: -1.5px;
       line-height: 1;
     }
 
     .header-sub {
-      font-size: 0.85rem;
+      font-size: clamp(0.75rem, 1.5vw, 0.9rem);
       color: var(--muted);
       margin-top: 8px;
       font-weight: 300;
@@ -80,7 +80,7 @@
 
     .card-num {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
+      font-size: clamp(0.6rem, 1vw, 0.7rem);
       color: var(--muted);
       letter-spacing: 2px;
       margin-bottom: 24px;
@@ -97,7 +97,7 @@
     .card-03 .card-indicator { background: var(--blue); }
 
     .card-title {
-      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-size: clamp(1.3rem, 2vw, 2rem);
       font-weight: 700;
       line-height: 1.1;
       margin-bottom: 14px;
@@ -105,7 +105,7 @@
     }
 
     .card-desc {
-      font-size: 0.875rem;
+      font-size: clamp(0.8rem, 1.2vw, 0.95rem);
       color: var(--muted);
       line-height: 1.6;
       font-weight: 300;
@@ -116,7 +116,7 @@
     }
 
     .card-link {
-      font-size: 0.8rem;
+      font-size: clamp(0.7rem, 1vw, 0.85rem);
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -136,6 +136,15 @@
       header { padding: 28px 24px 24px; }
       main { grid-template-columns: 1fr; }
       .card { border-right: none; min-height: auto; padding: 28px 24px; }
+
+      /* Em mobile as fontes baseadas em vw ficam muito pequenas com 1 coluna,
+         entao redefine com valores fixos confortaveis */
+      .header-eyebrow { font-size: 0.7rem; }
+      .header-sub     { font-size: 0.85rem; }
+      .card-num       { font-size: 0.65rem; }
+      .card-title     { font-size: 1.5rem; }
+      .card-desc      { font-size: 0.875rem; }
+      .card-link      { font-size: 0.8rem; }
     }
   </style>
 </head>
