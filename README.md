@@ -1,4 +1,7 @@
 
+🌐 **[Acesse o site ao vivo](https://yuriAlvesbordin.github.io/aframe-playground/)**
+
+---
 
 Demonstração interativa da biblioteca [A-Frame](https://aframe.io) para criação de cenas 3D no navegador via WebXR. Desenvolvido como projeto acadêmico para a disciplina de Computação Gráfica.
 
