@@ -132,6 +132,12 @@
     .card-link svg { transition: transform 0.2s ease; }
     .card:hover .card-link svg { transform: translateX(4px); }
 
+    /* Tablet: 2 colunas para evitar vw critico antes do breakpoint mobile */
+    @media (max-width: 1024px) {
+      main { grid-template-columns: 1fr 1fr; }
+      .card:nth-child(2) { border-right: none; }
+    }
+
     @media (max-width: 768px) {
       header { padding: 28px 24px 24px; }
       main { grid-template-columns: 1fr; }
@@ -139,11 +145,12 @@
 
       /* Em mobile as fontes baseadas em vw ficam muito pequenas com 1 coluna,
          entao redefine com valores fixos confortaveis */
+      h1              { font-size: 2.2rem; letter-spacing: -1px; }
       .header-eyebrow { font-size: 0.7rem; }
-      .header-sub     { font-size: 0.85rem; }
+      .header-sub     { font-size: 0.875rem; }
       .card-num       { font-size: 0.65rem; }
       .card-title     { font-size: 1.5rem; }
-      .card-desc      { font-size: 0.875rem; }
+      .card-desc      { font-size: 0.9rem; }
       .card-link      { font-size: 0.8rem; }
     }
   </style>
